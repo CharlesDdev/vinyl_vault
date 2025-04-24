@@ -52,3 +52,17 @@ class RecordApp: #defines class
        # Store Record
        record = {"artist": artist, "album": album, "year": int(year), "genre": genre, "condition": condition}
        self.records.append(record)
+
+       # Clear inputs
+       self.artist_entry.delete(0, tk.END)
+       self.album_entry.delete(0, tk.END)
+       self.year_entry.delete(0, tk.END)
+       self.genre_entry.delete(0, tk.END)
+       self.condition_entry.delete(0, tk.END)
+
+       messagebox.showinfo("Success", "Record saved!")
+
+       # Run the app
+       if __name__ == "__main__":
+           root = tk.Tk()
+           app = RecordApp(root)
