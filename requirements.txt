@@ -1,0 +1,1 @@
+Lists dependencies (e.g. Tkinter, Kivy, etc.)
