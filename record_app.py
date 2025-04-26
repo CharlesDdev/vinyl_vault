@@ -2,6 +2,7 @@
 
 import tkinter as tk
 from tkinter import messagebox #shows pop-up messages
+from tkinter import ttk #
 
 class RecordApp: #defines class
    def __init__(self, root):
@@ -62,8 +63,3 @@ class RecordApp: #defines class
           self.condition_entry.delete(0, tk.END)
 
           messagebox.showinfo("Success", "Record saved!")
-
-if __name__ == "__main__":
-    root = tk.Tk()
-    app = RecordApp(root)
-    root.mainloop()

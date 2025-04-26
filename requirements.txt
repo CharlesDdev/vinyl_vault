@@ -1,1 +1,2 @@
-Lists dependencies (e.g. Tkinter, Kivy, etc.)
+# Lists dependencies (e.g. Tkinter, Kivy, etc.)
+- Tkinter is included with Python, so no external packages neede yet
