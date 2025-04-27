@@ -1,4 +1,3 @@
-# Entry point to run the app
 from record_app import RecordApp
 import tkinter as tk
 
