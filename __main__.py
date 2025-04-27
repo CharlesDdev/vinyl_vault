@@ -1,4 +1,4 @@
-from record_app import RecordApp
+from .record_app import RecordApp
 import tkinter as tk
 
 if __name__ == "__main__":
