@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox, ttk
-from test.test_json.test_enum import WierdNum
-import grp
+from antigravity import geohash
+
 
 class RecordApp:
     def __init__(self, root):
@@ -59,6 +59,7 @@ class RecordApp:
     def view_records(self):
         view_window = tk.Toplevel(self.root) # type: tk.Toplevel
         view_window.title("Record Collection")
+        view_window.geometry("700x400") # Sets a default size for window
 
         # Creates a frame to hold the Treeview and Scollbar
         frame = tk.Frame(view_window)
@@ -95,6 +96,10 @@ class RecordApp:
         for index, record in enumerate(self.records):
             tag = "evenrow" if index % 2 == 0 else "oddrow"
             tree.insert("", tk.END, values=(record["artist"], record["album"], record["year"], record["genre"], record["condition"]), tags=(tag,))
+
+        # If no records, show a messagebox
+        if not self.records:
+            tk.Label(view_window, text="No records found to display.", font=("Arial", 14)).pack(pady=20)
 
 
 
