@@ -29,6 +29,8 @@ class RecordApp:
 
         tk.Button(root, text="Save Record", command=self.save_record).grid(row=5, column=0, columnspan=2, pady=10)
 
+        tk.Button(root, text="View Collection", command=self.view_records).grid(row=6, column=0, columnspan=2, pady=10)
+
 
 
     def save_record(self):
@@ -51,6 +53,20 @@ class RecordApp:
         self.genre_entry.delete(0, tk.END)
         self.condition_entry.delete(0, tk.END)
         messagebox.showinfo("Success", "Record saved!")
+
+        def view_records(self):
+            view_windows = tk.Toplevel(self.root)
+            view_window.title("Record Collection")
+            tree = ttk.Treeview(view_window, columns="Artist, "Album", "Year", "Genre", "Condition", show="headings")
+            tree.heading("Artist", text="Artist")
+            tree.heading("Album", text="Album")
+            tree.heading("Year", text="Year")
+            tree.heading("Genre", text="Genre")
+            tree.heading("Condition", text="Condition")
+            tree.pack(padx=10, pady=10)
+            for record in self.records:
+                tree.insert("", tk.END, values=(record["artis"]))
+
 
 
 
