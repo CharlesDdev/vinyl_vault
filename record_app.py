@@ -1,7 +1,5 @@
 import tkinter as tk
 from tkinter import messagebox, ttk
-from antigravity import geohash
-
 
 class RecordApp:
     def __init__(self, root):
