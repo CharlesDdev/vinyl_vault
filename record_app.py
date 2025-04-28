@@ -55,9 +55,9 @@ class RecordApp:
         messagebox.showinfo("Success", "Record saved!")
 
         def view_records(self):
-            view_windows = tk.Toplevel(self.root)
+            view_window = tk.Toplevel(self.root) # type: tk.Toplevel
             view_window.title("Record Collection")
-            tree = ttk.Treeview(view_window, columns="Artist, "Album", "Year", "Genre", "Condition", show="headings")
+            tree = ttk.Treeview(view_window, columns=("Artist", "Album", "Year", "Genre", "Condition"), show="headings")
             tree.heading("Artist", text="Artist")
             tree.heading("Album", text="Album")
             tree.heading("Year", text="Year")
@@ -65,7 +65,7 @@ class RecordApp:
             tree.heading("Condition", text="Condition")
             tree.pack(padx=10, pady=10)
             for record in self.records:
-                tree.insert("", tk.END, values=(record["artis"]))
+                tree.insert("", tk.END, values=(record["artist"], record["album"], record["year"], record["genre"], record["condition"]))
 
 
 
