@@ -82,7 +82,8 @@ class RecordApp:
         # Add scrollbar
         scrollbar = ttk.Scrollbar(frame, orient="vertical", command=tree.yview)
         tree.configure(yscrollcommand=scrollbar.set)
-        tree.grid(row=0, column=1, sticky="ns")
+        tree.grid(row=0, column=1, sticky="nsew")
+        scrollbar.grid(row=0, column=1, sticky="ns")
 
         # Makes the frame expandable
         frame.grid_rowconfigure(0, weight=1)
