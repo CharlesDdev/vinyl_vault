@@ -63,7 +63,7 @@ class RecordApp:
 
         # Create Treeview with style
         style = ttk.Style()
-        style.configure("Treeview", rowheight=25)
+        style.configure("Treeview", rowheight=25, foreground="black") # Sets text color
         style.map("Treeview", background=[("selected", "#347083")])
         tree = ttk.Treeview(frame, columns=("Artist", "Album", "Year", "Genre", "Condition"), show="headings")
         tree.heading("Artist", text="Artist")
