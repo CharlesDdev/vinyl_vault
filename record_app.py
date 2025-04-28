@@ -1,5 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox, ttk
+from test.test_json.test_enum import WierdNum
+import grp
 
 class RecordApp:
     def __init__(self, root):
@@ -57,15 +59,42 @@ class RecordApp:
     def view_records(self):
         view_window = tk.Toplevel(self.root) # type: tk.Toplevel
         view_window.title("Record Collection")
+
+        # Creates a frame to hold the Treeview and Scollbar
+        frame = tk.Frame(view_window)
+        frame.pack(padx=10, pady=10, fill="both", expand=True)
+
+        # Creaes Treeview with syling
+        style = ttk.Style()
+        style.configure("Treeview", rowheight=25)
+        style.map("Treeview", background=[("selected", "#347083")])
         tree = ttk.Treeview(view_window, columns=("Artist", "Album", "Year", "Genre", "Condition"), show="headings")
         tree.heading("Artist", text="Artist")
         tree.heading("Album", text="Album")
         tree.heading("Year", text="Year")
         tree.heading("Genre", text="Genre")
         tree.heading("Condition", text="Condition")
-        tree.pack(padx=10, pady=10)
-        for record in self.records:
-            tree.insert("", tk.END, values=(record["artist"], record["album"], record["year"], record["genre"], record["condition"]))
+        tree.column("Artist", width=150)
+        tree.column("Album", width=200)
+        tree.column("Year", width=80)
+        tree.column("Genre", width=100)
+        tree.column("Condition", width=100)
+
+        # Add scrollbar
+        scrollbar = ttk.Scrollbar(frame, orient="vertical", command=tree.yview)
+        tree.configure(yscrollcommand=scrollbar.set)
+        tree.grid(row=0, column=1, sticky="ns")
+
+        # Makes the frame expandable
+        frame.grid_rowconfigure(0, weight=1)
+        frame.grid_columnconfigure(0, weight=1)
+
+        # Add alternating row colors
+        tree.tag_configure("oddrow", background="#f0f0f0") # Light gray
+        tree.tag_configure("evenrow", background="#ffffff") # White
+        for index, record in enumerate(self.records):
+            tag = "evenrow" if index % 2 == 0 else "oddrow"
+            tree.insert("", tk.END, values=(record["artist"], record["album"], record["year"], record["genre"], record["condition"]), tags=(tag,))
 
 
 
