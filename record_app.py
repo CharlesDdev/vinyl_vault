@@ -8,7 +8,6 @@ class RecordApp:
         self.root.title("Vinyl Vault")
         self.data_manager = DataManager()
         self.records = self.data_manager.load_records()
-        print(f"Initialized with {len(self.records)} records in RecordApp: {self.records}")
 
         tk.Label(root, text="Artist").grid(row=0, column=0, padx=5, pady=5)
         self.artist_entry = tk.Entry(root)
