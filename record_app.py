@@ -88,7 +88,7 @@ class RecordApp:
         frame.grid_columnconfigure(0, weight=1)
 
         # Add alternating row colors
-        tree.tag_configure("oddrow", background="#f0f0f0")
+        tree.tag_configure("oddrow", background="#d3d3d3")
         tree.tag_configure("evenrow", background="#ffffff")
         for index, record in enumerate(self.records):
             tag = "evenrow" if index % 2 == 0 else "oddrow"
