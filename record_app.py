@@ -1,11 +1,14 @@
 import tkinter as tk
 from tkinter import messagebox, ttk
+from data_manager import DataManager
 
 class RecordApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Vinyl Vault")
-        self.records = []
+        self.data_manager = DataManager()
+        self.records = self.data_manager.load_records()
+        print(f"Initialized with {len(self.records)} records in RecordApp: {self.records}")
 
         tk.Label(root, text="Artist").grid(row=0, column=0, padx=5, pady=5)
         self.artist_entry = tk.Entry(root)
@@ -45,6 +48,7 @@ class RecordApp:
             return
         record = {"artist": artist, "album": album, "year": int(year), "genre": genre, "condition": condition}
         self.records.append(record)
+        self.data_manager.save_records(self.records)
         self.artist_entry.delete(0, tk.END)
         self.album_entry.delete(0, tk.END)
         self.year_entry.delete(0, tk.END)
